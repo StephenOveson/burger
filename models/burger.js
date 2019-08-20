@@ -1,23 +1,24 @@
-let orm = require('../config/orm')
+let orm = require('../config/orm');
 
-var burger = {
-    selectAll: function(cb) {
-      orm.selectAll("burgers", function(res) {
-        cb(res);
-      });
+let burgers = {
+    create: function(value, callback){
+        orm.insertInto('burgers', {
+            column: 'burger_name',
+            value: value
+        }, callback);
     },
-    // The variables cols and vals are arrays.
-    create: function(cols, vals, cb) {
-      orm.insertOne("burgers", cols, vals, function(res) {
-        cb(res);
-      });
+    selectAll: function(column, value, callback) {
+        orm.selectWhere('burgers', column, value, callback);
     },
-    update: function(objColVals, condition, cb) {
-      orm.updateOne("burgers", objColVals, condition, function(res) {
-        cb(res);
-      });
+    select: function(callback){
+        orm.select('burgers', callback)
+    },
+    update: function(value, id, callback){
+        orm.updateWhere('burgers', 'devoured', value, 'id', id, callback);
+    },
+    delete: function (id, callback) {
+        orm.deleteWhere('burgers', 'id', id, callback);
     }
-  };
-  
-  // Export the database functions for the controller (catsController.js).
-  module.exports = burger;
+}
+
+module.exports = burgers;
