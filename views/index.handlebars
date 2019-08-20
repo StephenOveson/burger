@@ -1,22 +1,24 @@
 <div class="container">
-    <img src="https://food.fnr.sndimg.com/content/dam/images/food/fullset/2017/5/10/0/FNM_060117-Smashburger-Style-Burgers-Recipe_s4x3.jpg.rend.hgtvcom.616.462.suffix/1494459418304.jpeg"
-        alt="" class="m-auto">
+    <img src="https://www.freepnglogos.com/uploads/burger-png/burger-png-png-images-yellow-images-12.png"
+        alt="" class="img-fluid rounded mx-auto d-block" style="max-width: 50%;">
     <div class="row">
         <div class="col-md-6">
+                <h2>Yummy, yummy burgers</h2>
             <ul>
                 {{#each burgers}}
                 {{#unless this.devoured}}
-                <li>{{this.burger_name}} <button class="btn btn-warning devour-btn m-1"
+                <li>{{this.burger_name}} <button class="btn btn-outline-secondary devour-btn m-1"
                         data-id="{{this.id}}">Devour</button></li>
                 {{/unless}}
                 {{/each}}
             </ul>
         </div>
         <div class="col-md-6">
+                <h2>Look what I ate!</h2>
             <ol>
                 {{#each burgers}}
                 {{#if this.devoured}}
-                <li>{{this.burger_name}} <button class="btn btn-warning delete-btn m-1"
+                <li>{{this.burger_name}} <button class="btn btn-outline-secondary delete-btn m-1"
                         data-id="{{this.id}}">Remove</button>
                 </li>
 
